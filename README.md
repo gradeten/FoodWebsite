@@ -1,2 +1,2 @@
 # Team3Osorii
-Flask
+Flask 과제1 & 과제2
