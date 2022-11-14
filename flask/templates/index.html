@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>🍐 이대맛집 🍐</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+</head>
+
+<body> 
+    <div class="container">
+        <div class="navbar">
+            <div>
+                <a href="/">
+                    <img src="{{url_for('static', filename='image/pearlogo.png')}}" width="100px">
+                </a>
+            </div>
+            <span class="nav">
+                <a href="/favorite" id="bar"><img src="{{url_for('static', filename='image/favorites.png')}}" width="75px"></a>
+                <a onclick="openPopup()" class="cursor" id="bar2">
+                    <img src="{{url_for('static', filename='image/profile.png')}}" width="60px">
+                </a>
+                <div class="popup" id="popup">
+                    <a href="/login"><p style="color:black">로그인</p></a>
+                    <a href="/member-join"><p style="color:black">회원가입</p></a>
+                </div>
+            </span>      
+        </div>
+    </div>
+
+
+<div style="background-image: url({{ url_for('static', filename='image/foodbanner2.jpg') }})" class="welcome">
+    <br><br><br><br>
+    <h2>이대 주변 식당들 모두 여기에!</h2>
+    <br>
+    <a href="/dinerform" class="btn">맛집 등록하러 가기</a>
+    <br><br><br><br><br><br>
+</div>
+
+<br>
+
+
+<div class="navbar">
+    <h3 id="leftspace">맛집 리스트</h3>
+    <span class="nav">
+        <a href="/dinerlist"><p id="rightspace">더보기</p></a>
+    </span>
+</div>
+
+<!-- 클래스명은 변경하면 안 됨 -->
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+            <a href="/placeDashboard">
+                <div>
+                <img src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/tw6ljh9r41tlfkaq.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+                </div>
+            </a>
+        </div>
+		<div class="swiper-slide">
+            <div>
+                <img src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/tw6ljh9r41tlfkaq.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+		<div class="swiper-slide">
+            <div>
+                <img src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/tw6ljh9r41tlfkaq.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div>
+            <img src="https://recipe1.ezmember.co.kr/cache/recipe/2020/05/14/9d81fb398cb77c9ae5ba625171b1e3f51.jpg">
+            <p><b>식당 이름</b></p>
+            <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+		<div class="swiper-slide">
+            <div>
+                <img src="https://recipe1.ezmember.co.kr/cache/recipe/2020/05/14/9d81fb398cb77c9ae5ba625171b1e3f51.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+		<div class="swiper-slide">
+            <div>
+                <img src="https://recipe1.ezmember.co.kr/cache/recipe/2020/05/14/9d81fb398cb77c9ae5ba625171b1e3f51.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div>
+            <img src="https://gradium.co.kr/wp-content/uploads/greek-yogurt-2.jpg">
+            <p><b>식당 이름</b></p>
+            <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+		<div class="swiper-slide">
+            <div>
+                <img src="https://gradium.co.kr/wp-content/uploads/greek-yogurt-2.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+		<div class="swiper-slide">
+            <div>
+                <img src="https://gradium.co.kr/wp-content/uploads/greek-yogurt-2.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+	</div>
+
+	<!-- 네비게이션 -->
+	<div class="swiper-button-next swiper-button-black"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	<div class="swiper-button-prev swiper-button-black"></div><!-- 이전 버튼 -->
+
+	<!-- 페이징 -->
+	<div class="swiper-pagination"></div>
+</div>
+<br><br><br><br><br>
+
+<div class="navbar">
+    <h3 id="leftspace">최신 맛집 리뷰</h3>
+    <span class="nav">
+        <a href="/review"><p id="rightspace">더보기</p></a>
+    </span>
+</div>
+
+<!-- 클래스명은 변경하면 안 됨 -->
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide img2">
+            <div>
+            <img src="{{url_for('static', filename='image/star.png')}}">
+            <p><b>식당 이름</b></p>
+            <p>"너무 맛있어요"</p>
+            </div>
+        </div>
+		<div class="swiper-slide img2">
+            <div>
+                <img src="{{url_for('static', filename='image/star.png')}}">
+                <p><b>식당 이름</b></p>
+                <p>"너무 맛있어요"</p>
+            </div>
+        </div>
+		<div class="swiper-slide img2">
+            <div>
+                <img src="{{url_for('static', filename='image/star.png')}}">
+                <p><b>식당 이름</b></p>
+                <p>"너무 맛있어요"</p>
+            </div>
+        </div>
+        <div class="swiper-slide img2">
+            <div>
+            <img src="{{url_for('static', filename='image/star.png')}}">
+            <p><b>식당 이름</b></p>
+            <p>"괜찮아요"</p>
+            </div>
+        </div>
+		<div class="swiper-slide img2">
+            <div>
+                <img src="{{url_for('static', filename='image/star.png')}}">
+                <p><b>식당 이름</b></p>
+                <p>"괜찮아요"</p>
+            </div>
+        </div>
+		<div class="swiper-slide img2">
+            <div>
+                <img src="{{url_for('static', filename='image/star.png')}}">
+                <p><b>식당 이름</b></p>
+                <p>"괜찮아요"</p>
+            </div>
+        </div>
+        <div class="swiper-slide img2">
+            <div>
+            <img src="{{url_for('static', filename='image/star.png')}}">
+            <p><b>식당 이름</b></p>
+            <p>"너무 맛없어요"</p>
+            </div>
+        </div>
+		<div class="swiper-slide img2">
+            <div>
+                <img src="{{url_for('static', filename='image/star.png')}}">
+                <p><b>식당 이름</b></p>
+                <p>"너무 맛없어요"</p>
+            </div>
+        </div>
+		<div class="swiper-slide img2">
+            <div>
+                <img src="{{url_for('static', filename='image/star.png')}}">
+                <p><b>식당 이름</b></p>
+                <p>"너무 맛없어요"</p>
+            </div>
+        </div>
+	</div>
+
+	<!-- 네비게이션 -->
+	<div class="swiper-button-next swiper-button-black"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	<div class="swiper-button-prev swiper-button-black"></div><!-- 이전 버튼 -->
+
+	<!-- 페이징 -->
+	<div class="swiper-pagination"></div>
+</div>
+
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+
+
+
+<script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+</html>
