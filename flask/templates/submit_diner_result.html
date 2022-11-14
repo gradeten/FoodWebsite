@@ -1,0 +1,18 @@
+<section>
+    <p>
+        Restaurant name is {{data.name}} and address is {{data.addr}}
+    </p>
+    <p>
+        Restaurant tel is {{data.tel}} and category is {{data.category}}
+    </p>
+    <p>
+        Parking is
+        {% if data['park'] == "parkingyes" %}
+        available
+        {% endif %}
+        {% if data['park'] == "parkingno" %}
+        NOT available
+        {% endif %}
+        and Open/Close time is {{data.time1}} ~ {{data.time2}}
+    </p>
+</section>
