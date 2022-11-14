@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>🍐 이대맛집 🍐</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='placeDashboard.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+</head>
+<body>
+
+<!--받은 메뉴바-->
+    <div class="container">
+        <div class="navbar">
+            <div>
+                <a href="/">
+                     <img src="{{url_for('static', filename='image/pearlogo.png')}}" width="100px">
+                </a>
+            </div>
+            <span class="nav">
+                <a href="/favorite" id="bar"><img src="{{url_for('static',filename='image/favorites.png')}}" width="75px"></a>
+                <a onclick="openPopup()" class="cursor" id="bar2">
+                    <img src="{{url_for('static',filename='image/profile.png')}}" width="60px">
+                </a>
+                <div class="popup" id="popup">
+                    <a href="/login"><p style="color:black">로그인</p></a>
+                    <a href="/member-join"><p style="color:black">회원가입</p></a>
+                </div>
+            </span>      
+        </div>
+    </div>
+
+<!-- 맛집 사진 헤더-->
+<div class="header">
+    <img src="{{url_for('static', filename='image/daepyo.png')}}" alt="대표사진" style="display:block">
+</div>
+<br><br>
+
+<div class="place">
+<!--맛집 설명 컨테이너-->
+<h1 id="pHeading" align="left top"><b id="pName">맛집 이름 </b>
+<b id="pRate" style="color: orange;">별점</b>
+</h1><!--가능하면 호버링할때 즐겨찾기, 수정이라고 뜨게 수정하기-->
+    <img src="{{url_for('static', filename='image/favoritebtn.png')}}" align="right" id="bookmark">
+    <img src="{{url_for('static', filename='image/edit.png')}}" align="right" id="edit">
+
+<br>
+<!--맛집 이름, 별점, 별, 수정 아이콘 끝-->
+
+<!--맛집 설명-->
+<div id="content" align="left bottom">
+<h2 id="add"> 주 소 : <span id="pAddress" align="center">주소</span></h2>
+<h2 id="tel">전화번호: <span id="pTel" align="center">전화 번호</span></h2>
+<h2 id="cat">음식종류: <span id="pCategory" align="center">음식 종류</span></h2>
+<h2 id="pri">가격대: <span id="pPrice" align="center">가격대</span></h2>
+<h2 id="oph">영업시간: <span id="pOPHour" align="center">영업시간</span></h2>
+<h2 id="par">주차장소: <span id="pParking" align="center">주차장소</span></h2>
+<h2 id="sit">사이트: <span id="pSite" align="center">웹사이트</span></h2><br>
+</div>
+</div>
+<br>
+
+<div class="foodMenu">
+<!--메뉴 컨테이너-->
+<h2 id="mHeading"><b>  메뉴 </b><b id="mAmount" style="color: orange;">메뉴 개수</b></h2><br>
+<!--'메뉴', 메뉴개수-->
+<!--나눔선, 사진 4분할 칸-->
+<img src="{{url_for('static', filename='image/menu1.png')}}" align="top left" id="m1">
+<img src="{{url_for('static', filename='image/menu2.png')}}" align="top right" id="m2">
+<img src="{{url_for('static', filename='image/menu3.png')}}" align="bottom left" id="m3">
+<img src="{{url_for('static', filename='image/menu4.png')}}" align="bottom right" id="m4">
+<br><br>
+<!--메뉴 더보기-->
+<a href="/Menu"><div id="morebutton1" onclick=메뉴페이지로 이동>
+<b>메뉴 더보기 </b><img src="{{url_for('static', filename='image/arrow.png')}}" id="arrow">
+</div></a>
+</div>
+<br>
+
+<div class="review">
+<!--리뷰 컨테이너-->
+<h2 id="rHeading"s><b>  리뷰 </b><b id="rAmount" style="color: orange;">리뷰 개수</b></h2><br>
+<!--리뷰 내용물..... 아마 게시물 형태?-->
+<div id="article1" align="top">
+    <img src="{{url_for('static', filename='image/reviewphoto1.png')}}" align="left" id="r1">
+    <p id="rDate1">0000-00-00</p>
+    <pre id="rText1">리뷰내용</pre>
+</div>
+<div id="article2" align="bottom">
+    <img src="{{url_for('static', filename='image/reviewphoto2.png')}}" align="left" id="r2">
+    <p id="rDate2">0000-00-00</p>
+    <pre id="rText2">리뷰내용</pre>
+</div>
+<br>
+<!--리뷰 더보기 버튼 형식 인풋 이거아닌듯-->
+<a href="/review"><div id="morebutton2" onclick="" font-family="Nato Sans KR">
+<b>리뷰 더보기 </b><img src="{{url_for('static', filename='image/arrow.png')}}" id="arrow">
+</div></a>
+</div>
+<br>
+<br>
+
+
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+
+<script language="JavaScript" src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+</html>
