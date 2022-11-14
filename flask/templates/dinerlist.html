@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>🍐 이대맛집 🍐</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+</head>
+
+<body> 
+
+<div class="container">
+    <div class="navbar">
+        <div>
+            <a href="/">
+                <img src="{{url_for('static', filename='image/pearlogo.png')}}" width="100px">
+            </a>
+        </div>
+        <span class="nav">
+            <a href="/favorite" id="bar"><img src="{{url_for('static', filename='image/favorites.png')}}" width="75px"></a>
+            <a onclick="openPopup()" class="cursor" id="bar2">
+                <img src="{{url_for('static', filename='image/profile.png')}}" width="60px">
+            </a>
+            <div class="popup" id="popup">
+                <a href="/login"><p style="color:black">로그인</p></a>
+                <a href="/member-join"><p style="color:black">회원가입</p></a>
+            </div>
+        </span>      
+    </div>
+</div>
+
+<div class="yellow">
+    <h3>맛집 리스트</h3>
+</div>
+
+<br><br>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col3">
+            <a href="/placeDashboard">
+            <div>
+            <img src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/tw6ljh9r41tlfkaq.jpg">
+            <p><b>식당 이름</b></p>
+            <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+            </a>
+        </div>
+        <div class="col3">
+            <div>
+                <img src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/tw6ljh9r41tlfkaq.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="col3">
+            <div>
+                <img src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/tw6ljh9r41tlfkaq.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col3">
+            <div>
+            <img src="https://recipe1.ezmember.co.kr/cache/recipe/2020/05/14/9d81fb398cb77c9ae5ba625171b1e3f51.jpg">
+            <p><b>식당 이름</b></p>
+            <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="col3">
+            <div>
+                <img src="https://recipe1.ezmember.co.kr/cache/recipe/2020/05/14/9d81fb398cb77c9ae5ba625171b1e3f51.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="col3">
+            <div>
+                <img src="https://recipe1.ezmember.co.kr/cache/recipe/2020/05/14/9d81fb398cb77c9ae5ba625171b1e3f51.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col3">
+            <div>
+            <img src="https://gradium.co.kr/wp-content/uploads/greek-yogurt-2.jpg">
+            <p><b>식당 이름</b></p>
+            <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="col3">
+            <div>
+                <img src="https://gradium.co.kr/wp-content/uploads/greek-yogurt-2.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+        <div class="col3">
+            <div>
+                <img src="https://gradium.co.kr/wp-content/uploads/greek-yogurt-2.jpg">
+                <p><b>식당 이름</b></p>
+                <p>이대 정문 - 사케동, 마제소바</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+
+<script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+
+</html>
