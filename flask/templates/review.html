@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>🍐 이대맛집 🍐</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+	
+	
+<body>
+	<div class="container">
+    <div class="navbar">
+        <div>
+            <a href="/">
+                <img src="{{url_for('static',filename='image/pearlogo.png')}}" width="100px">
+            </a>
+        </div>
+        <span class="nav">
+            <a href="/favorite" id="bar"><img src="{{url_for('static',filename='image/favorites.png')}}" width="75px"></a>
+            <a onclick="openPopup()" class="cursor" id="bar2">
+                 <img src="{{url_for('static',filename='image/profile.png')}}" width="60px">
+            </a>
+            <div class="popup" id="popup">
+                <a href="/login"><p style="color:black">로그인</p></a>
+                <a href="/member-join"><p style="color:black">회원가입</p></a>
+            </div>
+        </span>      
+    </div>
+</div>
+<div class="yellow">
+	<h2 class="review_header">식당 이름</h2>
+	<div class="constant-star">
+	
+	<span class="fa fa-star checked fa-2x"></span>
+	<span class="star-rate">
+		4.3
+		</span>
+	</div>
+</div>
+<br>
+<a href="/placeDashboard">
+    <b class="return" >&nbsp&nbsp&nbsp&nbsp< 맛집으로</b>
+    </a>
+
+<div class="reviewcontainer">
+<br><br>
+<div class="review-nav">
+	<b>리뷰(17)</b>
+	<button class="cursor" onclick="location.href='/review_upload'">
+		리뷰 작성하기
+	</button>
+	<select input id="latest">
+		<option value="latest">최신순</option>
+		<option>별점 낮은순</option>
+		<option>별점 높은순</option>
+	</select>
+	</div>
+	
+	<br><br>
+	
+
+	<image src="{{url_for('static',filename='image/review1.png')}}" class="review1"></image>
+	<image src="{{url_for('static',filename='image/review2.png')}}" class="review2"></image>
+	</div>
+    
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+								 
+<script src="{{url_for('static',filename='review.js')}}"></script>
+<script src="{{url_for('static',filename='script.js')}}"></script>
+	</body>
+</html>
