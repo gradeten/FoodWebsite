@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends "navigation.html" %}
+
+{% block section %}
+
 <head>
-   <meta charset="utf-8">
-   <title>🍐 이대맛집 🍐</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='Menu.css') }}">
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
-<body>
-    <div class="container">
-        <div class="navbar">
-            <div>
-                <a href="/">
-                    <img src="{{ url_for('static', filename='image/pearlogo.png') }}" width="100px">
-                </a>
-            </div>
-            <span class="nav">
-                <a href="/favorites" id="bar"><img src="{{ url_for('static', filename='image/favorites.png') }}" width="75px"></a>
-                <a onclick="openPopup()" class="cursor" id="bar2">
-                    <img src="{{ url_for('static', filename='image/profile.png') }}" width="60px">
-                </a>
-                <div class="popup" id="popup">
-                   <a href="/login"><p style="color:black">로그인</p></a> 
-                   <a href="/member-join"><p style="color:black">회원가입</p></a>                                      
-                </div>
-            </span>      
-        </div>
-    </div> <!--내비게이션--> 
+
    <div class="yellow">
       <h3>대표 메뉴 등록 화면</h3>
    </div><!-- 대표메뉴 화면-->
@@ -38,6 +18,8 @@
 <div id="room_type">
 <div class="center">
 <div class="menu">
+   <label for="name"><h3>식당 이름: {{data.restaurant_name}}</h3></label> 
+    <br>
    <b class="list">음식 이름&nbsp;</b>
    <input type="text" name="name" id="menu"><br><br>
    <b class="list">가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
@@ -47,19 +29,11 @@
    <b class="list">한 줄 소개</b>
    <input type="text" name="write" id="menu"><br><br>
    <b class="list">음식 사진</b>
-   <input type="file" name="picture" id="img" accept='image/*'><br><br><br>
+   <input type="file" name="file" id="img" accept='image/*'><br><br><br>
    <img id="previewImg" height="150px" src="{{ url_for('static', filename='image/img_1.png') }}" alt="이미지 미리보기">
 </div>
 </div>
 <br><br><br>
-</div>
-
-
-<div class="menu">
-<div id="field"></div>
-<div class="button_1">
-   <button class="button" onclick="button1_click()"><b>+</b></button><br>
-</div>
 </div>
 
 
@@ -70,14 +44,16 @@
 </a>
 </div>
 </form>
-    
-    
+
+<br><br><br><br><br><br>
+
 <footer>
     <!-- <h2>Footer</h2> -->
     <p style="color:aliceblue">이대맛집</p>
     <p style="color:aliceblue">Website made by Team Osorii</p>
 </footer>
 
+
 <script type="text/javascript" src="{{ url_for('static', filename='Menu.js') }}"></script>
-</body>
-</html>
+
+{% endblock section %}

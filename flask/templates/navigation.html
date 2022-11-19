@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>🍐 이대맛집 🍐</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Slider -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+</head>
+
+<body> 
+    <div class="container">
+        <div class="navbar">
+            <div>
+                <a href="/">
+                    <img src="{{url_for('static', filename='image/pearlogo.png')}}" width="100px">
+                </a>
+            </div>
+            <span class="nav">
+                <a href="/favorite" id="bar"><img src="{{url_for('static', filename='image/favorites.png')}}" width="75px"></a>
+                <a onclick="openPopup()" class="cursor" id="bar2">
+                    <img src="{{url_for('static', filename='image/profile.png')}}" width="60px">
+                </a>
+                <div class="popup" id="popup">
+                    <a href="/login"><p style="color:black">로그인</p></a>
+                    <a href="/member-join"><p style="color:black">회원가입</p></a>
+                </div>
+            </span>      
+        </div>
+    </div>
+
+
+<section>
+{% block section %}
+    
+{% endblock section %}
+</section>
+
+</body>
+</html>

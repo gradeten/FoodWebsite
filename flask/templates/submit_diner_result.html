@@ -15,4 +15,15 @@
         {% endif %}
         and Open/Close time is {{data.time1}} ~ {{data.time2}}
     </p>
+    <img src="{{image_path}}" alt="My Image">
+    
+    <form method="post" action="/Menu_rg">
+        <input type="hidden" name="restaurant_name" value="{{data.name}}">
+        <div>
+            <p>
+                It's time to register the representative menu in {{data.name}}
+            </p>
+            <button type="submit" name="menu">Register Menu</button><br><br>
+        </div>
+    </form>
 </section>

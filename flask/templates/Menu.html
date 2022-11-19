@@ -1,33 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends "navigation.html" %}
+
+{% block section %}
 <head>
-	<meta charset="utf-8">
-	<title>🍐 이대맛집 🍐</title>
 	 <link rel="stylesheet" href="{{ url_for('static', filename='Menu.css') }}">
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-	 <div class="container">
-        <div class="navbar">
-            <div>
-                <a href="/">
-                    <img src="{{ url_for('static', filename='image/pearlogo.png') }}" width="100px">
-                </a>
-            </div>
-            <span class="nav">
-                <a href="/" id="bar"><img src="{{ url_for('static', filename='image/favorites.png') }}" width="75px"></a>
-                <a onclick="openPopup()" class="cursor" id="bar2">
-                    <img src="{{ url_for('static', filename='image/profile.png') }}" width="60px">
-                </a>
-                <div class="popup" id="popup">
-                   <a href="/login"><p style="color:black">로그인</p></a> 
-                   <a href="/member-join"><p style="color:black">회원가입</p></a>                                      
-                </div>
-            </span>      
-        </div>
-    </div> <!--내비게이션--> 
+
+    <!--내비게이션--> 
 	<div class="yellow">
         <h3>대표 메뉴 조회 화면</h3>
     </div><!-- 대표메뉴 조회 화면-->
@@ -35,9 +15,9 @@
     <a href="/placeDashboard">
     <b class="return" > < 맛집으로 </b>
     </a>
-<a href="/Menu_rg">
+<!-- <a href="/Menu_rg">
     <img src="{{ url_for('static', filename='image/change.png') }}" width="100px" class="re">
-</a>
+</a> -->
     <br><br>
     
 <div class="menucontainer">
@@ -85,11 +65,14 @@
 </div>
     
 <br><br>
+        
 <footer>
     <!-- <h2>Footer</h2> -->
     <p style="color:aliceblue">이대맛집</p>
     <p style="color:aliceblue">Website made by Team Osorii</p>
 </footer>
-    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
-</html>
+        
+
+<script type="text/javascript" src="{{ url_for('static', filename='Menu.js') }}"></script>
+        
+{% endblock section %}

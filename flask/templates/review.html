@@ -1,35 +1,15 @@
-<html>
 
+{% extends "navigation.html" %}
+
+
+{% block section %}
 <head>
-    <meta charset="utf-8">
-    <title>🍐 이대맛집 🍐</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-	<link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-	
-	
-<body>
-	<div class="container">
-    <div class="navbar">
-        <div>
-            <a href="/">
-                <img src="{{url_for('static',filename='image/pearlogo.png')}}" width="100px">
-            </a>
-        </div>
-        <span class="nav">
-            <a href="/favorite" id="bar"><img src="{{url_for('static',filename='image/favorites.png')}}" width="75px"></a>
-            <a onclick="openPopup()" class="cursor" id="bar2">
-                 <img src="{{url_for('static',filename='image/profile.png')}}" width="60px">
-            </a>
-            <div class="popup" id="popup">
-                <a href="/login"><p style="color:black">로그인</p></a>
-                <a href="/member-join"><p style="color:black">회원가입</p></a>
-            </div>
-        </span>      
-    </div>
-</div>
+
+
 <div class="yellow">
 	<h2 class="review_header">식당 이름</h2>
 	<div class="constant-star">
@@ -76,5 +56,5 @@
 								 
 <script src="{{url_for('static',filename='review.js')}}"></script>
 <script src="{{url_for('static',filename='script.js')}}"></script>
-	</body>
-</html>
+
+{% endblock section %}
