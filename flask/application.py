@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
+from database import DBhandler
 import sys
+
 application = Flask(__name__)
 
+DB = DBhandler()
 
 @application.route("/")
 def hello():
@@ -43,9 +46,11 @@ def view_review():
 def view_Menu():
     return render_template("Menu.html")
 
-@application.route("/Menu_rg")
-def view_Menu_rg():
-    return render_template("Menu_rg.html")
+@application.route("/Menu_rg", methods=['POST'])
+def reg_menu():
+    data=request.form
+    print(data)
+    return render_template("Menu_rg.html", data=data)
 
 @application.route("/submit_diner")
 def reg_diner_submit():
@@ -64,11 +69,15 @@ def reg_diner_submit():
 
 @application.route("/submit_diner_post", methods=['POST'])
 def reg_diner_submit_post():
-    
+    global idx
     image_file=request.files["file"]
     image_file.save("static/image/{}".format(image_file.filename))
     data=request.form
-    return render_template("submit_diner_result.html", data=data)
+    
+    if DB.insert_restaurant(data['name'], data, image_file.filename):
+        return render_template("submit_diner_result.html", data=data, image_path="static/image/"+image_file.filename)
+    else:
+        return "Restaurant name already exist!"
 
 
 @application.route("/submit_menu")
@@ -77,25 +86,35 @@ def reg_menu_submit():
     price=request.args.get("price")
     allergy=request.args.get("allergy")
     write=request.args.get("write")
-    picture=request.args.get("picture")
-    print(name,price,allergy,write,picture)
+    picture=request.args.get("file")
+    
+    print(name,price,allergy,write,file)
 
 
 @application.route("/submit_menu_post", methods=['POST'])
 def reg_menu_submit_post():
-    
-    image_file=request.files["picture"]
+    global idx
+    image_file=request.files["file"]
     image_file.save("static/image/{}".format(image_file.filename))
     menudata=request.form
-    return render_template("submit_menu_result.html", menudata=menudata)
-
+    if DB.insert_menu(menudata['name'], menudata, image_file.filename):
+        return render_template("submit_menu_result.html", menudata=menudata, image_path="static/image/"+image_file.filename)
+    else:
+        return "Menu name already exist!"
 
 
 
 @application.route("/submit_review_post", methods=['POST'])
 def reg_review_submit_post():
+
+    image_file=request.files["file"]
+    image_file.save("static/image/{}".format(image_file.filename))
     reviewdata=request.form
-    return render_template("submit_review_result.html",reviewdata=reviewdata)
+
+    if DB.insert_review(reviewdata,image_file.filename):
+        return render_template("submit_review_result.html",reviewdata=reviewdata, image_path="static/image/"+image_file.filename)
+
+
 
 
 

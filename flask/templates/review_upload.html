@@ -1,37 +1,14 @@
-<html>
+{% extends "navigation.html" %}
+
+{%block section  %}
 
 <head>
-    <meta charset="utf-8">
-    <title>🍐 이대맛집 🍐</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-	<link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-	
-	
-<body>
-	<div class="container">
-    <div class="navbar">
-        <div>
-            <a href="/">
-                <img src="{{url_for('static',filename='image/pearlogo.png')}}" width="100px">
-            </a>
-        </div>
-        <span class="nav">
-            <a href="/favorite" id="bar"><img src="{{url_for('static',filename='image/favorites.png')}}" width="75px"></a>
-            <a onclick="openPopup()" class="cursor" id="bar2">
-                 <img src="{{url_for('static',filename='image/profile.png')}}" width="60px">
-            </a>
-            <div class="popup" id="popup">
-                <a href="/login"><p style="color:black">로그인</p></a>
-                <a href="/member-join"><p style="color:black">회원가입</p></a>
-            </div>
-        </span>      
-    </div>
-</div>
- <form method="post" enctype="multipart/form-data" action="/submit_review_post">
+
+<form method="post" enctype="multipart/form-data" action="/submit_review_post">
 <div class="yellow">
     <h1>______의</h1>
 	<h1>리뷰를 작성해주세요.</h1>
@@ -47,16 +24,16 @@
 
 <br>
 	<div class="form-container">	
-		<div id="leftspace2"><input type="file" name="picture" id="img" accept='image/*'>
+		<div id="leftspace2"><input type="file" name="file" id="img" accept='image/*'>
 		</div>
 			<br><br>
 	    <img id="previewImg" height="150px" src="{{url_for('static',filename='image/img_1.png')}}" alt="이미지 미리보기">
 	</div>
 <br>
 
-	<div class="textarea">
-	<textarea id="review" placeholder="후기를 작성하세요." size="100" name="review"></textarea>
-		</div>
+
+	<textarea id="review" placeholder="후기를 작성하세요." rows="10%" cols="30%" name="review"></textarea>
+
 	<br>
 	 <input type="submit"  class="reviewbutton" value="등록하기">
 </form>
@@ -72,5 +49,5 @@
 <script src="{{url_for('static',filename='review.js')}}"></script>
 <script src="{{url_for('static',filename='script2.js')}}"></script>
     
-    </body>
-</html>
+
+{% endblock section %}
