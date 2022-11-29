@@ -1,6 +1,6 @@
 # Team3Osorii
 
-Firebase 과제1 & 과제2: <br />
+Database 연결 실습1 & 실습2: <br />
 
 김지후(2176104) <br />
 김혜경(2044011) <br />
