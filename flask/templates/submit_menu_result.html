@@ -6,4 +6,8 @@
         Allergic indigrent is {{menudata.allergy}} and memo is{{menudata.write}}
     </p>
     <img src="{{image_path}}" alt="My Image">
+    
+    <form method="post" action="/Menu_rg">
+         <input type="hidden" name="restaurant_name" value="{{menudata.restaurant_name}}">
+        <button type="submit" name="rg">메뉴 추가하기</button></form>
 </section>

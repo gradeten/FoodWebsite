@@ -1,0 +1,57 @@
+
+{% extends "navigation.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock header %}
+
+
+{%block section %}
+<form method="post" enctype="multipart/form-data" action="/restaurants/{{ res_name }}/review">
+<div class="yellow">
+    <h1>{{ res_name }}의</h1>
+	<h1>리뷰를 작성해주세요.</h1>
+	<br>
+    <input type="hidden" id="res_name" name="res_name" value="{{ res_name }}"/>
+
+	<div class="star">
+        {%for i in range(1, 6)%}
+            <span class="fa fa-star fa-3x" id="star{{i}}" onclick="setStarRating({{i}})"></span>
+        {%endfor%}
+    </div>
+    <input type="hidden" id="star_rating" name="star_rating" value="0"/>
+    </div>
+
+<br>
+	<div class="form-container">
+		<div id="leftspace2">
+            <input type="file" name="file" id="img" accept='image/*'>
+		</div>
+			<br><br>
+	    <img id="previewImg" height="150px" src="{{url_for('static',filename='image/img_1.png')}}" alt="이미지 미리보기">
+	</div>
+<br>
+
+	<div class="textarea">
+	<textarea id="review" placeholder="후기를 작성하세요." size="100" name="review"></textarea>
+		</div>
+	<br>
+	 <input type="submit"  class="reviewbutton" value="등록하기">
+</form>
+
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+
+<script src="{{url_for('static',filename='review.js')}}"></script>
+<script src="{{url_for('static',filename='script2.js')}}"></script>
+
+
+{% endblock section %}

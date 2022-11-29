@@ -1,35 +1,41 @@
 
 {% extends "navigation.html" %}
 
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock header %}
+
 
 {% block section %}
-<head>
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
 
 <div class="yellow">
-	<h2 class="review_header">식당 이름</h2>
+	<!--<h2 class="review_header"></h2>-->
+    <h2 class="review_header">{{res_name}}</h2>
+    <form method="get" action="/review_upload">
+
+    </form>
+
 	<div class="constant-star">
 	
 	<span class="fa fa-star checked fa-2x"></span>
 	<span class="star-rate">
-		4.3
+		{{ r_avg_rate }}
 		</span>
 	</div>
 </div>
 <br>
-<a href="/placeDashboard">
+<a href="/view_detail/{{ res_name }}">
     <b class="return" >&nbsp&nbsp&nbsp&nbsp< 맛집으로</b>
     </a>
 
 <div class="reviewcontainer">
 <br><br>
 <div class="review-nav">
-	<b>리뷰(17)</b>
-	<button class="cursor" onclick="location.href='/review_upload'">
+	<b>리뷰 ({{ review_data|length }})</b>
+	<button class="cursor" onclick="location.href='/restaurants/{{ res_name }}/new'">
 		리뷰 작성하기
 	</button>
 	<select input id="latest">
@@ -37,14 +43,26 @@
 		<option>별점 낮은순</option>
 		<option>별점 높은순</option>
 	</select>
-	</div>
-	
-	<br><br>
-	
+</div>
+    <br><br><div>
+        {%for review in review_data%}
+            <div class="review" style="display:block; padding-bottom: 100px;">
+            <img style="width:150px;height:150px; position:relative; left:5%;display:block" src="{{url_for('static',filename='image/review_profile.png')}}" id="review_profile_image" >
+              <div class="r_review" style="display:inline-block; min-width:480px; overflow: hidden; position: relative; width:70%; height:300px;  left:12%; right:10%; border-style:solid;border-color:grey; border-width: 1px; border-radius: 30px;">
+             <div class="r_star" style="display:inline-block; position:absolute; top:10px; left:10px; margin-bottom:3px;border-color:grey; border-style:solid; padding:3px;border-radius:20px;border-width:1px;">
+                {%for i in range(1,review.star|int + 1)%}
+                <span class="fa fa-star fa-2x checked"></span>
+                 {%endfor%}
+                 {% for i in range(review.star|int,6) %}
+                <span class="fa fa-star fa-2x"></span>
+                {% endfor %}
+                </div>
+                  <div style="position:absolute; max-width:50%;height:auto; display:inline-block;top:60px; left:13px;">{{ review.review }}</div>
+                 <img style="max-width:50%;height:auto; display:inline-block; right:10px; top:60px; bottom:10px; position:absolute;" src="/static/image/{{ review.img_path }}"/>
+                {{ review.created_at }}
+              </div></div>
+        {%endfor%}
 
-	<image src="{{url_for('static',filename='image/review1.png')}}" class="review1"></image>
-	<image src="{{url_for('static',filename='image/review2.png')}}" class="review2"></image>
-	</div>
     
 <br><br><br><br><br><br>
 
@@ -56,5 +74,8 @@
 								 
 <script src="{{url_for('static',filename='review.js')}}"></script>
 <script src="{{url_for('static',filename='script.js')}}"></script>
+
+
+
 
 {% endblock section %}

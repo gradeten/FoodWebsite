@@ -1,0 +1,70 @@
+{% extends "navigation.html" %}
+
+{% block section %}
+	 <link rel="stylesheet" href="{{ url_for('static', filename='Menu.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--내비게이션--> 
+	<div class="yellow">
+        <h3>대표 메뉴 조회 화면</h3>
+    </div><!-- 대표메뉴 조회 화면-->
+	<br>
+    <a href="/view_detail/{{restaurant_name}}">
+    <b class="return" > < 맛집으로 </b>
+    </a>
+         
+        
+    <form method="post" action="/Menu_rg">
+    
+    <!-- <button type="submit" class="re">수정하기 -->
+ 
+    <!--<img src="{{ url_for('static', filename='image/change.png') }}" width="100px" class="re">-->
+           </button>
+        </form>
+    
+    <br><br>
+{% if total > 0 %}
+<p class="return">
+<!-- 메뉴 개수 -- 현재까지 {{total}}개 등록됨 -->
+    
+</p>
+<br><br><br><br>
+{% for data in datas %}    
+    <div class="menucontainer">
+    <div id="food">
+    <div class="num1">
+             <img src="../../static/image/{{data.img_path}}" width="400px" class="num1_1" class="food"></div>
+            <div class="num2">
+             
+                <p><b class="look">음식 이름</b>{{data.name}}</p><br>
+                <p><b class="look">가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{data.price}}<br><br>
+                <P><b class="look">주의 성분</b>{{data.allergy}}</P><br>
+                 <p><b class="look">설명&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{data.write}}</p><br>
+        </div></div>
+        <br><br>
+        
+        <hr class="hr">
+        <br><br>
+            {% endfor %}
+            {% else %}
+            <p>
+                등록된 맛집이 없습니다.
+            </p>
+            {% endif %}
+        </div>
+<br><br><br>
+        
+        
+        
+<br><br><br><br>
+        
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+        
+
+{% endblock section %}

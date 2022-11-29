@@ -145,12 +145,24 @@ footer {
     padding: 20px;
 }
 
+.gray{
+    background-color: #dddddd;
+    text-align:center;
+    padding: 20px;
+}
+
 .container{
     /* max-width:1300px; */
     max-width: 100%;
     margin:auto;
     padding-left:25px;
     padding-right: 25px;
+}
+
+.container2{
+    /* max-width:1300px; */
+    max-width: 100%;
+    margin:auto;
 }
 
 .row{
@@ -160,6 +172,26 @@ footer {
     justify-content: center;
     /* padding-bottom: 50px; */
 }
+
+.textleft{
+    text-align: left;
+}
+
+
+
+.col2{
+    flex-basis:50%;
+    text-align:center;
+    padding: 50px;
+}
+
+
+.col2 img{
+    width:100px;
+    height:300px;
+    margin:15px;
+}
+
 
 .col3{
     flex-basis:25%;
@@ -238,6 +270,7 @@ footer {
 
 .center{
     align-items: center;
+    text-align: center;
 }
 
 #changebtn{
@@ -279,3 +312,4 @@ footer {
         position:relative;
     }
 }
+

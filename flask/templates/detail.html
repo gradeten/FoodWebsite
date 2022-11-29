@@ -1,0 +1,142 @@
+{% extends "navigation.html" %}
+
+
+{% block section %}
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='placeDashboard.css')}}">
+</head>
+
+<!-- 맛집 사진 헤더-->
+<div class="header">
+    <img src="/static/image/{{data.img_path}}" alt="대표사진" width="100%">
+</div>
+    
+
+<br><br>
+
+<div class="place">
+<!--맛집 설명 컨테이너-->
+<h1 id="pHeading" align="left top"><b id="pName">{{data.name}}</b>
+<b id="pRate" style="color: orange;">{{ r_avg_rate }}</b>
+</h1><!--가능하면 호버링할때 즐겨찾기, 수정이라고 뜨게 수정하기-->
+    <img src="{{url_for('static', filename='image/favoritebtn.png')}}" align="right" id="bookmark">
+    <img src="{{url_for('static', filename='image/edit.png')}}" align="right" id="edit">
+
+<br>
+<!--맛집 이름, 별점, 별, 수정 아이콘 끝-->
+
+<!--맛집 설명-->
+<div id="content" align="left bottom">
+<h2 id="add"> 주 소 : <span id="pAddress" align="center">{{data.addr}}</span></h2>
+<h2 id="tel">전화번호: <span id="pTel" align="center">{{data.tel}}</span></h2>
+<h2 id="cat">음식종류: <span id="pCategory" align="center">
+    {% if data['category'] == "japan" %}
+    일식
+    {% endif %}
+    {% if data['category'] == "china" %}
+    중식
+    {% endif %}
+    {% if data['category'] == "europe" %}
+    양식
+    {% endif %}
+    {% if data['category'] == "korea" %}
+    한식
+    {% endif %}
+    {% if data['category'] == "dessert" %}
+    카페 디저트
+    {% endif %}
+    </span></h2>
+<h2 id="pri">가격대: <span id="pPrice" align="center">
+    {% if data['price'] == "5000" %}
+    5000원 이하
+    {% endif %}
+    {% if data['price'] == "10000" %}
+    5000원 ~ 10000원
+    {% endif %}
+    {% if data['price'] == "15000" %}
+    10000원 ~ 15000원
+    {% endif %}
+    {% if data['price'] == "20000" %}
+    15000원 ~ 20000원
+    {% endif %}
+    {% if data['price'] == "25000" %}
+    20000원 이상
+    {% endif %}
+    </span></h2>
+<h2 id="oph">영업시간: <span id="pOPHour" align="center">{{data.time1}} ~ {{data.time2}}</span></h2>
+<h2 id="par">주차여부: <span id="pParking" align="center">
+    {% if data['park'] == "parkingyes" %}
+    가능
+    {% endif %}
+    {% if data['park'] == "parkingno" %}
+    불가능
+    {% endif %}
+    </span></h2>
+<h2 id="sit">사이트: <span id="pSite" align="center">{{data.site}}</span></h2><br>
+</div>
+</div>
+<br>
+
+<div class="foodMenu">
+<!--메뉴 컨테이너-->
+<h2 id="mHeading"><b>  메뉴 </b><b id="mAmount" style="color: orange;">{{total}}</b></h2><br>
+<!--'메뉴', 메뉴개수-->
+<!--나눔선, 사진 4분할 칸-->
+{% for c in range(4) %}
+    {% if menudata[c] in menudata %}
+<img src="/static/image/{{menudata[c].img_path}}" align="top left" id="m1">
+    {% endif %}
+{% endfor %}
+<br><br>
+
+<!--메뉴 더보기-->
+<!--<a href="/Menu"><div id="morebutton1" onclick=메뉴페이지로 이동>
+<b>메뉴 더보기 </b><img src="{{url_for('static', filename='image/arrow.png')}}" id="arrow">
+</div></a>
+</div>-->
+<br>
+<!-- 메류로 이동-->
+    <form method="post" action="/menu_list">
+      <input type="hidden" name="restaurant_name" value="{{data.name}}">
+       <a href="/menu_list/{{data.name}}"><div id="morebutton1" onclick=메뉴페이지로 이동>
+<b>메뉴 더보기 </b><img src="{{url_for('static', filename='image/arrow.png')}}" id="arrow">
+</div></a> 
+    </form>
+</div>
+<br> 
+    
+<div class="review">
+<!--리뷰 컨테이너-->
+<h2 id="rHeading"s><b>  리뷰 </b><b id="rAmount" style="color: orange;">{{rAmount}}</b></h2><br>
+<!--리뷰 내용물..... 아마 게시물 형태?-->
+{% for c in range(2) %}
+    {% if review[c] in review %}
+<div id="article1" align="top">
+    <img src="/static/image/{{ review[c].img_path }}" align="left" id="r1">
+    <p id="rDate1">{{ review[c].created_at }}</p>
+    <pre id="rText1">{{ review[c].review }}</pre>
+</div>
+    {% endif %}
+{%endfor%}
+<br>
+<!--리뷰 더보기 버튼 형식 인풋 이거아닌듯-->
+
+<a href="/review/{{ data.name }}">
+    <div id="morebutton2" font-family="Nato Sans KR">
+        <b>리뷰 더보기 </b><img src="{{url_for('static', filename='image/arrow.png')}}" id="arrow">
+    </div>
+</a>
+</div>
+
+<br>
+<br>
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+
+<script language="JavaScript" src="{{url_for('static', filename='script.js')}}"></script>
+{% endblock section %}

@@ -89,7 +89,7 @@ footer {
 .header{
  width:100%;
  height:300px;
- /* align:center; */
+ align:center;
  overflow:hidden;
  object-fit: cover;
 }
