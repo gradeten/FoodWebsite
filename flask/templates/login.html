@@ -5,7 +5,15 @@
 		<title>🍐 이대맛집 🍐</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    {% with mesg = get_flashed_messages() %}
+    {% if mesg !=[] %}
+        <script>alert("{{ mesg[0] }}")</script>
+    {% endif %}
+    {% endwith %}
+        
 	</head>
+    
 	<body>
 		<div class="container">
 			<div class="login">
@@ -14,21 +22,24 @@
 						<img src="{{ url_for('static', filename='image/pearlogo1.png') }}">
 					</div>
 				</a>
+                
+                <form action="/login_confirm" method="post">
 				<section class="login-section">
 					<div class="id">	
-						<input placeholder="아이디" type="text">
+						<input placeholder="아이디" type="text" name="id">
 					</div>
 					<div class="id password">	
-						<input placeholder="비밀번호" type="password">
+						<input placeholder="비밀번호" type="password" name="pw">
 					</div>
 					<!-- 버튼 클릭 링크 맛집 홈 화면으로 연결 -->
 					<div class="login-button">
-						<button type="button" onClick="location.href='/'">로그인</button>
+						<button type="submit">로그인</button>
 					</div>
 					<div class="member-join">
-						<a href="/member-join">회원가입</a>
+						<a href="/signup">회원가입</a>
 					</div>
 				</section>
+                </form>
 			</div>
 		</div>
 		

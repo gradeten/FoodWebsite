@@ -82,33 +82,9 @@ textarea{
 	padding:15px;
 	font-size:40px;
 }
-.review-nav b{
-	float:left;
-	display:block;
-	padding-left:10%;
-	padding-right:30px;
-	
-	margin-top:4px;
-	font-size:20px;
-	
-}
-.review-nav button{
-	float:left;
-	margin:auto;
-	display:block;
-	color:white;
-	background:#201c1c;
-	border-radius:15px;
-	border:none;
-	padding:10px 10px;
-	font-size:15px;
-}
-.review-nav select{
-	float:right;
-	display:black;
-	margin-right:10%;
-	margin-top:18px;
-}
+
+
+
 .reviewprofile{
 	width:250px;
 	height:250px;
@@ -124,18 +100,25 @@ textarea{
 	width:95%;
 	display:block;
 	margin:auto;
-	
+
 }
 
 .review2{
 	width:95%;
 	display:block;
 	margin:auto;
-	
+
 }
 
 .reviewcontainer{
 	width:60%;
 	display:block;
+
+}
+
+.review-nav{
+
+	display:block;
 	margin:auto;
+
 }

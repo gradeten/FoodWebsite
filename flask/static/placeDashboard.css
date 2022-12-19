@@ -89,7 +89,7 @@ footer {
 .header{
  width:100%;
  height:300px;
- /* align:center; */
+ align:center;
  overflow:hidden;
  object-fit: cover;
 }
@@ -108,22 +108,16 @@ footer {
 #pHeading{
  float: left top;
 }
+
 #bookmark{
- float: right top;
-position: relative; top: -40px; left: -150px;
+ float:right top;
+ top:-40px; left:100px;
  overflow:hidden;
  object-fit: cover;
  width:50px;
  height:50px;
 }
-#edit{
- float: right top;
- position: relative; top: -40px;  left: -30px;
- overflow:hidden;
- object-fit: cover;
- width:50px;
- height:50px;
-}
+
 
 #pAddress {
  /* align: center; */
@@ -222,10 +216,12 @@ text-justify:distribute;
 color:#808080;
 }
 
+
+
+
 .review {
  float: center;
  width:750px;
- height:470px;
  border: 1px solid #f1f1f1;
  /* align: center; */
  margin: auto;
@@ -299,4 +295,9 @@ color:#808080;
  object-fit: cover;
  text-align: center;
  padding: 10px;
+}
+
+.favorite {
+    width: 97px;
+    height: auto;
 }

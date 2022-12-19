@@ -5,10 +5,13 @@
     <meta charset="utf-8">
     <title>🍐 이대맛집 🍐</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block header %}
 
+    {% endblock header %}
     <!-- Slider -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body> 
@@ -20,14 +23,28 @@
                 </a>
             </div>
             <span class="nav">
+                {% if session.get('id') %}
                 <a href="/favorite" id="bar"><img src="{{url_for('static', filename='image/favorites.png')}}" width="75px"></a>
+               
+                <a onclick="openPopup()" class="cursor" id="bar2">
+                    <img src="{{url_for('static', filename='image/profile.png')}}" width="35px">
+                </a>
+                <div class="popup" id="popup">
+                    <p style="color:black"><b>{{session['id']}}</b>님</p>
+                    <a href="/logout"><p style="color:black">로그아웃</p></a>
+                </div>
+                
+                
+                {% else %}
                 <a onclick="openPopup()" class="cursor" id="bar2">
                     <img src="{{url_for('static', filename='image/profile.png')}}" width="35px">
                 </a>
                 <div class="popup" id="popup">
                     <a href="/login"><p style="color:black">로그인</p></a>
-                    <a href="/member-join"><p style="color:black">회원가입</p></a>
+                    <a href="/signup"><p style="color:black">회원가입</p></a>
                 </div>
+                {% endif %}
+                
             </span>      
         </div>
     </div>

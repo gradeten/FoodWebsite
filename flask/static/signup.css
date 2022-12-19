@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Noto Sans KR', sans-serif;
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .container{
@@ -14,7 +14,7 @@
 	align-items:center;
 }
 
-.login{
+.join{
 	width:40%;
 	display:flex;
 	flex-direction:column;
@@ -22,7 +22,7 @@
 }
 
 .logo{
-	padding-top: 33%;
+	padding-top: 30%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -34,16 +34,25 @@
 	height: 68px;
 }
 
-.login-section{
+.join-section{
 	margin-top: 15px;
 }
 
 .id{
 	width: 350px;
 	height :48px;
-	border: solid 2px #f1f1f1;
+	border: solid 2px #f4f4f4;
 	border-radius: 10px;
 	background: white;
+	display:flex;
+	flex-direction:row;
+}
+
+.id button{
+	margin-right: 9px;
+	margin-top: 10px;
+	width: 154px;
+	height: 25px;
 }
 
 .id{
@@ -61,11 +70,11 @@
 	padding: 10px;
 }
 
-.login-button{
+.join-button{
 	padding-top: 25px;
 }
 
-.login-button button{
+.join-button button{
 	width: 350px;
 	height :48px;
 	font-size: 17px;
@@ -75,18 +84,6 @@
 	border-radius: 10px;
 }
 
-.login-button > button:active{
+.join-button > button:active{
 	background-color: #ebc255;
-}
-
-.member-join{
-	padding-top: 8px;
-	text-align: right;
-}
-
-.member-join a{
-	text-decoration-line: none;
-	font-size: 15px;
-	color: black;
-	
 }

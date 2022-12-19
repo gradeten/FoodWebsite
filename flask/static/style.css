@@ -44,9 +44,7 @@ h2{
     
 }
 
-h3{
-    margin-left: 30px;
-}
+
 
 h4{
     font-size:20px;
@@ -145,8 +143,22 @@ footer {
     padding: 20px;
 }
 
+
+.gray{
+    background-color: #dddddd;
+    text-align:center;
+    padding: 20px;
+}
+
 .container{
     /* max-width:1300px; */
+    max-width: 100%;
+    margin:auto;
+    padding-left:25px;
+    padding-right: 25px;
+}
+
+.container2{
     max-width: 100%;
     margin:auto;
     padding-left:25px;
@@ -158,8 +170,14 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    /* padding-right: 50px; */
     /* padding-bottom: 50px; */
 }
+
+.textleft{
+    text-align: left;
+}
+
 
 .col3{
     flex-basis:25%;
@@ -238,6 +256,7 @@ footer {
 
 .center{
     align-items: center;
+    text-align: center;
 }
 
 #changebtn{
@@ -279,3 +298,4 @@ footer {
         position:relative;
     }
 }
+

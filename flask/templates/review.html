@@ -1,51 +1,84 @@
 
 {% extends "navigation.html" %}
 
+{% block header %}
+<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock header %}
+
 
 {% block section %}
-<head>
-    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='review.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
+    <script>
+    $(document).ready(function(){
+        //alert("{{ order }}");
+        $('#order option:contains("{{ order }}")').prop("selected",true);
+    });
+    </script>
 
 <div class="yellow">
-	<h2 class="review_header">식당 이름</h2>
+	<!--<h2 class="review_header"></h2>-->
+    <h2 class="review_header">{{restaurant.name}}</h2>
+    <form method="get" action="/review_upload">
+
+    </form>
+
 	<div class="constant-star">
-	
-	<span class="fa fa-star checked fa-2x"></span>
-	<span class="star-rate">
-		4.3
-		</span>
+
+        <span class="fa fa-star checked fa-2x"></span>
+        <span class="star-rate">
+            {% if 'review_average' in restaurant %}
+                {{ restaurant.review_average }}
+            {% else %}
+                0
+            {% endif %}
+        </span>
 	</div>
 </div>
 <br>
-<a href="/placeDashboard">
+<a href="/view_detail/{{ restaurant.name }}">
     <b class="return" >&nbsp&nbsp&nbsp&nbsp< 맛집으로</b>
     </a>
 
-<div class="reviewcontainer">
+<div class="reviewcontainer" style="position:relative; margin:auto; width:900px;">
 <br><br>
-<div class="review-nav">
-	<b>리뷰(17)</b>
-	<button class="cursor" onclick="location.href='/review_upload'">
-		리뷰 작성하기
-	</button>
-	<select input id="latest">
-		<option value="latest">최신순</option>
-		<option>별점 낮은순</option>
-		<option>별점 높은순</option>
-	</select>
-	</div>
-	
-	<br><br>
-	
 
-	<image src="{{url_for('static',filename='image/review1.png')}}" class="review1"></image>
-	<image src="{{url_for('static',filename='image/review2.png')}}" class="review2"></image>
-	</div>
-    
+	<b style="position:sticky;float:left;display:block;margin-left:12%;padding-right:30px;margin-top:4px;font-size:20px;">리뷰 ({{ review_data|length }})</b>
+
+    <button class="cursor" onclick="location.href='{{ url_for('new_restaurant_review', res_name= restaurant.name) }}'" style="position:relative; left:20px; min-width:107px; float:left;margin:auto;display:block;color:white;background:#201c1c;border-radius:15px;border:none;padding:10px 10px;font-size:15px;">
+
+
+리뷰 작성하기
+	</button>
+	<select input id="order" name="order" value="latest" onchange="location.href='{{url_for('restaurant_review',res_name=restaurant.name)}}' + '?order=' + this.value" style="position:relative; left:35%; float:left;display:block;margin-right:10%;margin-top:18px;">
+		<option value="latest" {% if order == 'latest' %} selected {%  endif %}>최신순</option>
+		<option value="bad" {% if order == 'bad' %} selected {%  endif %}>별점 낮은순</option>
+		<option value="good" {% if order == 'good' %} selected {%  endif %}>별점 높은순</option>
+	</select>
+
+    <br><br><br>
+        {%for review in review_data%}
+            <div class="review" style="display:block; padding-bottom: 30px;padding-top:30px;">
+               <img style="margin:0;height:50px; position:relative; margin-right:0; left:12%; bottom: 10px;display:flex;" src="{{url_for('static',filename='image/review_profile.png')}}" id="review_profile_image" >
+                <div style="font-size:20px; font-weight:bold;display:flex; position:relative;left:19%; bottom:45px;  ">{{ review.user_nickname }}</div>
+              <div class="r_review" style="display:flex; min-width:480px; overflow: hidden; position: relative; width:70%; height:300px;  left:12%; right:10%; border-style:solid;border-color:#CECECE; border-width: 2px; border-radius: 30px;box-shadow: 1px 1px 4px 0px #CECECE;">
+             <div class="r_star" style="display:inline-block; position:absolute; top:12px; left:12px; margin-bottom:5px;border-color:lightgrey; border-style:solid; padding:5px;border-radius:30px;border-width:1px;box-shadow: 1px 1px 4px 0px grey;">
+                {%for i in range(1,review.star|int + 1)%}
+                <span class="fa fa-star fa-2x checked"></span>
+                 {%endfor%}
+                 {% for i in range(review.star|int,5) %}
+                <span class="fa fa-star fa-2x"></span>
+                {% endfor %}
+                </div>
+                  <div style="position:absolute; max-width:50%;height:auto; display:inline-block;top:68px; left:17px;">{{ review.review }}</div>
+                 <img style="max-width:40%; max-height:70%;display:inline-block; overflow:hidden;right:12px; top:66px; bottom:20px;  position:absolute;" src="/static/image/{{ review.img_path }}"/>
+                {{ review.created_at }}
+              </div></div>
+        {%endfor%}
+
+</div>
+
 <br><br><br><br><br><br>
 
 <footer>
@@ -53,8 +86,11 @@
     <p style="color:aliceblue">이대맛집</p>
     <p style="color:aliceblue">Website made by Team Osorii</p>
 </footer>
-								 
+
 <script src="{{url_for('static',filename='review.js')}}"></script>
 <script src="{{url_for('static',filename='script.js')}}"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
 
 {% endblock section %}
