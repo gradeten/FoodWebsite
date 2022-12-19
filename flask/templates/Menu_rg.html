@@ -1,0 +1,65 @@
+{% extends "navigation.html" %}
+
+{% block section %}
+{% for mesg in get_flashed_messages() %}
+    <script>alert("{{mesg}}")</script>
+{% endfor %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Menu.css') }}">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+   <div class="yellow">
+      <h3>대표 메뉴 등록 화면</h3>
+   </div><!-- 대표메뉴 화면-->
+   <br><br>
+    
+<form action="/submit_menu_post" method="post" enctype="multipart/form-data">
+    
+<div id="room_type">
+<div class="center">
+<div class="menu">
+   <label for="name"><h3>식당 이름: 
+       <input type="hidden" name="restaurant_name" value="{{data.restaurant_name}}">
+       {{data.restaurant_name}}
+       </h3></label> 
+    <br>
+   <b class="list">음식 이름&nbsp;</b>
+   <input type="text" name="name" id="menu"><br><br>
+   <b class="list">가격&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+   <input type="text" name="price" id="menu"><br><br>
+   <b class="list">주의 성분&nbsp;</b>
+   <input type="text" name="allergy" id="menu"><br><br>
+   <b class="list">한 줄 소개</b>
+   <input type="text" name="write" id="menu"><br><br>
+   <b class="list">음식 사진</b>
+   <input type="file" name="file" id="img" accept='image/*'><br><br><br>
+   <img id="previewImg" height="150px" src="{{ url_for('static', filename='image/img_1.png') }}" alt="이미지 미리보기">
+</div>
+</div>
+<br><br><br>
+</div>
+
+
+<div class="menu">
+<a href="/placeDashboard">
+     <input type="submit" value="등록하기" class="btn" id="changebtn">
+<!-- <img src="{{ url_for('static', filename='image/finish.png') }}" width="250px"> -->
+</a>
+</div>
+</form>
+
+<br><br><br><br><br><br>
+
+<footer>
+    <!-- <h2>Footer</h2> -->
+    <p style="color:aliceblue">이대맛집</p>
+    <p style="color:aliceblue">Website made by Team Osorii</p>
+</footer>
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='Menu.js') }}"></script>
+
+{% endblock section %}

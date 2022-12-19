@@ -1,0 +1,137 @@
+.list{
+      position:relative;
+    right:20px;  
+}
+.list_1{
+    position: relative;
+    right: 25px;
+}
+
+.menu{
+   /* max-width:1300px; */
+    margin:auto;
+    /* padding-left:50px;
+    padding-right: 25px; */
+    line-height: 200%;
+    text-align: center;
+    align-items: center;
+ 
+}
+
+ #menu{
+    position:static;
+    width: 400px;
+    height: 35px;
+}
+
+#img{
+  padding-left: 15px;
+  position:static;
+    width: 400px;
+    height: 35px;
+ 
+}
+
+
+ .return{
+    padding-left: 20px;
+    float: left;
+ }
+
+.fd{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.food {
+   display: block;
+    margin-left: 10px;
+    float: left;
+     
+}
+/*
+.row1{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+*/
+.food_row{
+    display: flex;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    /* padding-bottom: 50px; */
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.num1{
+/*    flex-basis:45%;
+    text-align:center;*/
+    padding: 40px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.num2{
+    margin-left: 45px;
+    float: left;
+   /* padding-right: 17%;
+    margin-right: 17%;*/
+   
+    }
+
+hr {
+    width: 65%;
+}
+.hr{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 0px;
+    border-top:1px dotted black;
+}
+
+.look{
+    text-align: right;
+    padding-right: 25px;
+    margin: 5px; 
+    
+
+}
+
+
+.re{
+    margin-right: 20px;
+    float: right;
+}
+
+    .button{
+    border: 0;
+    outline: dashed;
+    outline-color: gray;
+    font-size: 30px;
+    margin: 30px;
+    background: white;
+    color: black;
+    padding: 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+#previewImg{
+    outline-color: gray;
+    outline: none;
+    object-fit: contain;
+}
+
+.mcontainer{
+     /* max-width: 50%;*/
+      margin:auto;
+}

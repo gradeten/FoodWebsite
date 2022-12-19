@@ -1,0 +1,346 @@
+{% extends "navigation.html" %}
+
+
+{% block section %}
+
+<head>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='favorite.css')}}"> -->
+
+    <style>
+        .page-nation li{
+            list-style: none;
+        }
+
+        .page-wrap{
+            text-align: center;
+            font-size: 0;
+        }
+
+        .page-nation{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .page-nation a{
+            display:block;
+            margin: 0 3px;
+            float: left;
+            border: 1px solid #e6e6e6;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #fff;
+            font-size: 13px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .center{
+            align-items: center;
+            text-align: center;
+        }
+        .col3{
+        flex-basis:400px;
+        position: relative;
+        border: solid 2px lightgray;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 5px;
+        box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .container{
+        max-width: 100%;
+        margin:auto;
+        padding-left:25px;
+        padding-right: 25px;
+    }
+
+    .navbar{
+        display:flex;
+        align-items: center;
+        padding:12px;
+    }
+
+    .nav{
+        flex:1;
+        text-align: right;
+    }
+
+    #bar{
+        text-decoration: none;
+        color:black;
+        margin-right: 20px;
+    }
+
+    #bar2{
+        text-decoration: none;
+        color:black;
+        padding-top: 100px;
+    }
+
+    .popup{
+        width:150px;
+        background:#fff;
+        border-radius: 6px;
+        position:absolute;
+        text-align: left;
+        right:50px;
+        box-shadow:1px 1px 1px 1px darkgrey;
+        padding:10px 20px 10px;
+        line-height: 200%;
+        visibility: hidden;
+    }
+
+    .open-popup{
+        visibility: visible;
+    }
+
+    .cursor{
+        cursor:pointer;
+    }
+
+    a{
+        text-decoration: none;
+        color: black
+    }
+
+    #rightspace{
+        margin-right: 30px;
+    }
+
+    .yellow{
+        background-color: #ffd35c;
+        text-align:center;
+        padding: 20px;
+    }
+
+    .main-container{
+        max-width: 1300px;
+        margin:auto;
+        padding-left:25px;
+        padding-right: 25px;
+    }
+
+    .row{
+        display:flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-direction: row;
+        padding-bottom: 30px;
+    }
+
+
+
+    .col3_{
+        flex-basis:400px;
+        text-align:center;
+        padding: 15px;
+        margin: 5px;
+        border: solid 2px white;
+        box-sizing: border-box;
+    }
+
+    .col-bar{
+        display:flex;
+        align-items: center;
+    }
+
+    .col-bar h3{
+        text-align: left;
+        margin-right: 15px;
+    }
+
+    /*.col-bar p{
+        width: 10%;
+        font-size: 20px;
+        color: #ED7D31;
+        margin-right: 55%;
+    }*/
+
+    .col-bar img{
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        left: 85%;
+    }
+
+    .col-main img{
+        max-width: 60%;
+        height: 150px;
+        float: left;
+        margin-top: 10px;
+        margin-right: 15px;
+    }
+
+    .col-main p{
+        display: inline-block;
+        margin-top: 40px;
+        text-align: left;
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+    .col3:hover{
+        transform:translateY(-5px);
+    }
+
+    footer {
+        padding: 20px;
+        text-align: center;
+        background: #201c1c;
+        margin-top: 20px;
+        clear : both;
+    }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $(".favorite").click(function() {
+                const $el = $(this);
+                const restaurantName = $el.data("restaurant-name");
+                let favorited = $el.hasClass("active");
+
+                if (favorited) {
+                    $.post('{{ url_for('unfavorite') }}', { restaurant_name: restaurantName }, function(data) {
+                        $el.attr("src", "{{url_for('static', filename='image/favoritebtn.png')}}");
+                        $el.removeClass("active");
+                    });
+                } else {
+                    $.post('{{ url_for('favorite') }}', { restaurant_name: restaurantName }, function(data) {
+                        $el.attr("src", "{{url_for('static', filename='image/favorite-star.png')}}");
+                        $el.addClass("active");
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+
+<div class="yellow">
+    <h3>즐겨찾기</h3>
+</div>
+		
+<br><br>
+
+{% if restaurants|length > 0 %}
+<!-- <p>
+    즐겨찾기 리스트 -- 현재까지 {{total}}개 등록됨
+</p> -->
+
+<div class="main-container">
+	<div class="row">
+        
+        {% for restaurant in restaurants %}
+            <div class="col3">
+                <div class="col-bar">
+                    <h3><a href="/view_detail/{{restaurant.name}}/">{{restaurant.name}}</a></h3>
+                    <b style="font-size:20px; color: #ED7D31;">
+                        {% if 'review_average' in restaurant %}
+                            {{ restaurant.review_average }}
+                        {% else %}
+                            0
+                        {% endif %}
+                    </b>
+                    <img src="{{url_for('static', filename='image/favorite-star.png')}}" align="right" class="favorite active" data-restaurant-name="{{ restaurant.name }}">
+                </div>
+                <div class="col-main" style="font-size:15px;">
+                    <a href="/view_detail/{{restaurant.name}}/">
+                        <img src="/static/image/{{restaurant.img_path}}">
+                    </a>
+                    <br><br>
+                    <b>주소:</b> 
+                    {{restaurant.addr}}
+                    <br>
+                    <b>음식 종류:</b>
+                    {% if restaurant.category == "japan" %}
+                    일식
+                    {% endif %}
+                    {% if restaurant.category == "china" %}
+                    중식
+                    {% endif %}
+                    {% if restaurant.category == "europe" %}
+                    양식
+                    {% endif %}
+                    {% if restaurant.category == "korea" %}
+                    한식
+                    {% endif %}
+                    {% if restaurant.category == "dessert" %}
+                    디저트
+                    {% endif %}
+                    <br>
+                    <b>가격대:</b> 
+                    {% if restaurant.price == "5000" %}
+                    ~ 5000원
+                    {% endif %}
+                    {% if restaurant.price == "10000" %}
+                    5000원 ~
+                    {% endif %}
+                    {% if restaurant.price == "15000" %}
+                    10000원 ~
+                    {% endif %}
+                    {% if restaurant.price == "20000" %}
+                    15000원 ~
+                    {% endif %}
+                    {% if restaurant.price == "25000" %}
+                    20000원 ~
+                    {% endif %}
+                    <br>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% if restaurants|length % 3 == 1 %}
+            <div class="col3_">
+                <img src="/static/image/white.png">
+            </div>
+            <div class="col3_">
+                <img src="/static/image/white.png">
+            </div>
+        {% endif %}
+
+        {% if restaurants|length % 3 == 2 %}
+            <div class="col3_">
+                <img src="/static/image/white.png">
+            </div>
+        {% endif %}
+
+	</div>	
+</div>
+		
+<!-- 페이지네이션을 위한 코드 시작 -->
+{#<div class="page-wrap">#}
+{#    <div class="page-nation">#}
+{#        <ul>#}
+{#            <li>#}
+{#            {% for i in range(page_count)%}#}
+{#                <a href="{{url_for('list_restaurants', page=i)}}" color="black">{{i+1}}</a>#}
+{#            {% endfor %}#}
+{#            </li>#}
+{#        </ul>#}
+{#    </div>#}
+{#</div>#}
+{% else %}
+<div class="center">
+    <p>즐겨찾기된 맛집이 없습니다.</p>
+</div>
+{% endif %}
+
+
+
+<script type="text/javascript" src="{{url_for('static', filename='script.js')}}"></script>
+
+{% endblock section %}
