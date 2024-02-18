@@ -14,6 +14,7 @@
 
 
 <br />
+
 ### 주요 기능
 1. 홈 화면
 2. 맛집 둘러보기
@@ -25,5 +26,6 @@
 8. 로그인/로그아웃
 
 <br />
+
 ### 구현 방식
 HTML, CSS, Javascript, Flask, Firebase
