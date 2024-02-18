@@ -1,4 +1,4 @@
-# Team3Osorii
+## Team3Osorii
 
 이대맛집 웹사이트 최종: <br />
 
@@ -8,7 +8,12 @@
 이재인(2076325) <br />
 한서연(2071052) <br />
 
-## 맛집 등록 & 조회 웹사이트 🍳
+### 맛집 등록 & 조회 웹사이트 🍳
+<img width="1231" alt="homepage view" src="https://github.com/gradeten/Team3Osorii-FoodWebsite/assets/88281367/e0c3909c-9243-40c6-af8b-90468819850f">
+<img width="1207" alt="add view" src="https://github.com/gradeten/Team3Osorii-FoodWebsite/assets/88281367/e54c771c-4bf2-493f-ab62-dc8e8084b337">
+<img width="697" alt="login view" src="https://github.com/gradeten/Team3Osorii-FoodWebsite/assets/88281367/b4ee78f0-0aa4-41bc-b615-e780d02e7917">
+
+
 
 ### 주요 기능
 1. 홈 화면
