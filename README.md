@@ -13,7 +13,7 @@
 <img width="1207" alt="add view" src="https://github.com/gradeten/Team3Osorii-FoodWebsite/assets/88281367/e54c771c-4bf2-493f-ab62-dc8e8084b337">
 
 
-<br /><br />
+<br />
 ### 주요 기능
 1. 홈 화면
 2. 맛집 둘러보기
@@ -24,6 +24,6 @@
 7. 메뉴 조회
 8. 로그인/로그아웃
 
-<br /><br />
+<br />
 ### 구현 방식
 HTML, CSS, Javascript, Flask, Firebase
